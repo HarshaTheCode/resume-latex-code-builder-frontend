@@ -5,27 +5,33 @@ import Cookies from 'js-cookie';
 
 export const LLMcontext=createContext();
  
-   const LLMresponse = ({ children }) => {
- const [resumedata, setResumedata] = useState()
+const LLMresponse = ({ children }) => {
+  const [resumedata, setResumedata] = useState()
 
-     async  function axiosfecting() {
-       try {
-      const id=Cookies.get('Id')
-       //j:"6920b7433f2933b72d3c01e5"
-   
-        
-        
-         const data = await axios.post(`/api/create`)
-         const resumecode= data.data;
-         setResumedata(resumecode)
-        } catch(error){
-          console.log('the real errorr',error);
-        }
+  async function axiosfecting(formData) {
+    try {
+      const id = Cookies.get('Id')
+      
+      // Prepare the payload to send to backend
+      const payload = {
+        userId: id,
+        ...formData  // Spread all form data fields
+      }
+      
+      // Send formData in request body as second parameter to axios.post
+      const data = await axios.post(`/api/create`, payload)
+      const resumecode = data.data;
+      setResumedata(resumecode)
+    } catch(error){
+      console.log('the real error', error);
+      throw error; // Re-throw so Details.jsx can handle it
     }
+  }
 
   return (
-    <LLMcontext.Provider  value={[resumedata, axiosfecting]}> {children} </LLMcontext.Provider>
- 
+    <LLMcontext.Provider value={[resumedata, axiosfecting]}> 
+      {children} 
+    </LLMcontext.Provider>
   )
 }
 

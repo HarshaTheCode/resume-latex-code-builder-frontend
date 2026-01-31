@@ -74,14 +74,21 @@ const Details = () => {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setIsSubmitting(true);
-    // ============ PRESERVED API CALL ============
-    axiosfecting();
-    // ============================================
-    setTimeout(() => {
+    console.log('Request has been sent, waiting for response...');
+    console.log(formData);
+
+    try {
+      // ============ PRESERVED API CALL ============
+      // Passing formData ensures the backend receives the resume details in the request body
+      await axiosfecting(formData);
+      // ============================================
+    } catch (error) {
+      console.error("Error generating resume:", error);
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   // Step validation
