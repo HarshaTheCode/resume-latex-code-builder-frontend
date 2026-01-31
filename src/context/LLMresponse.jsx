@@ -14,7 +14,6 @@ const LLMresponse = ({ children }) => {
       
       // Prepare the payload to send to backend
       const payload = {
-        userId: id,
         ...formData  // Spread all form data fields
       }
       
