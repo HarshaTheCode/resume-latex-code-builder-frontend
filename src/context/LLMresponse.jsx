@@ -1,5 +1,5 @@
 import  { createContext } from 'react'
-import axios from 'axios'
+import axios from '../api/axiosConfig.js'
 import { useState } from 'react';
 import Cookies from 'js-cookie';
 

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../api/axiosConfig.js";
 import { Authcontextdata } from "../context/AuthContext.jsx";
 import { Mail, Lock, Loader2, ArrowRight } from "lucide-react";
 import Navcomponent from "../components/Navcomponent"; // Ensure Navcomponent is available if desired, or keep it standalone

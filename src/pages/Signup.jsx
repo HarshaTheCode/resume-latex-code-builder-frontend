@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api/axiosConfig.js';
 import { User, Mail, Lock, Loader2, ArrowRight } from "lucide-react";
 import Navcomponent from "../components/Navcomponent";
 
